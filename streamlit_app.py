@@ -8,7 +8,7 @@ st.title("🤝 Personalized Networking Assistant")
 # -----------------------------
 # Backend URL
 # -----------------------------
-BASE_URL = "https://networkingassistant.onrender.com"
+BASE_URL = "https://networkingassistant-1.onrender.com"git add .
 
 # -----------------------------------
 # Streamlit Session State
