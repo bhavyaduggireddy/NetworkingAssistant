@@ -5,6 +5,11 @@ st.set_page_config(page_title="Personalized Networking Assistant")
 
 st.title("🤝 Personalized Networking Assistant")
 
+# -----------------------------
+# Backend URL
+# -----------------------------
+BASE_URL = "https://networkingassistant.onrender.com"
+
 # -----------------------------------
 # Streamlit Session State
 # -----------------------------------
@@ -32,7 +37,7 @@ if st.button("Analyze Event"):
     else:
 
         response = requests.post(
-            "http://127.0.0.1:8000/api/analyze-event-ai",
+            f"{BASE_URL}/api/analyze-event-ai",
             json={
                 "event_name": event_name
             }
@@ -84,7 +89,7 @@ if st.session_state.analysis:
     if st.button("Submit Feedback"):
 
         feedback_response = requests.post(
-            "http://127.0.0.1:8000/api/feedback",
+            f"{BASE_URL}/api/feedback",
             json={
                 "event_name": st.session_state.event,
                 "rating": feedback,
@@ -110,7 +115,7 @@ fact_statement = st.text_input("Enter a statement to verify")
 if st.button("Check Fact"):
 
     fact_response = requests.post(
-        "http://127.0.0.1:8000/api/fact-check",
+        f"{BASE_URL}/api/fact-check",
         json={
             "event_name": fact_statement
         }
@@ -144,7 +149,7 @@ st.header("📜 Conversation History")
 if st.button("Load History"):
 
     history_response = requests.get(
-        "http://127.0.0.1:8000/api/history"
+        f"{BASE_URL}/api/history"
     )
 
     if history_response.status_code == 200:
@@ -178,7 +183,7 @@ st.header("📝 Feedback History")
 if st.button("Load Feedback History"):
 
     feedback_history_response = requests.get(
-        "http://127.0.0.1:8000/api/feedback-history"
+        f"{BASE_URL}/api/feedback-history"
     )
 
     if feedback_history_response.status_code == 200:
